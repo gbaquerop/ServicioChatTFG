@@ -1,7 +1,6 @@
-package com.example.serviciochat.service;
+package com.example.serviciochat.service.interfaces;
 
 import com.example.serviciochat.DTO.MessageDTO;
-import com.example.serviciochat.model.Message;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,11 +1,11 @@
-package com.example.serviciochat.service;
+package com.example.serviciochat.service.impl;
 
 import com.example.serviciochat.DTO.MessageDTO;
 import com.example.serviciochat.DTO.NuevoChatDTO;
 import com.example.serviciochat.model.Chat;
-import com.example.serviciochat.model.Message;
 import com.example.serviciochat.repository.ChatRepository;
 import com.example.serviciochat.repository.UserRepository;
+import com.example.serviciochat.service.interfaces.IChatService;
 import com.example.serviciochat.utils.EncriptationHelper;
 import org.springframework.stereotype.Service;
 
@@ -18,16 +18,19 @@ import java.util.stream.Collectors;
 public class ChatService implements IChatService {
     private final ChatRepository chatRepository;
     private final UserRepository userRepository;
+    private final EncriptationHelper encriptationHelper;
 
     public ChatService(ChatRepository chatRepository,
-                       UserRepository userRepository) {
+                       UserRepository userRepository,
+                       EncriptationHelper encriptationHelper) {
         this.chatRepository = chatRepository;
         this.userRepository = userRepository;
+        this.encriptationHelper = encriptationHelper;
     }
 
     @Override
     public List<NuevoChatDTO> findAllChatsBUserId(String id) {
-        id = EncriptationHelper.desencriptarAES(id);
+        id = encriptationHelper.desencriptarAES(id);
 
         List<Chat> all = chatRepository.findAll();
         List<NuevoChatDTO> chats = new ArrayList<>();
@@ -41,8 +44,8 @@ public class ChatService implements IChatService {
 
     @Override
     public Optional<NuevoChatDTO> crearChat(String idUsuario1, String idUsuario2) {
-        idUsuario1 = EncriptationHelper.desencriptarAES(idUsuario1);
-        idUsuario2 = EncriptationHelper.desencriptarAES(idUsuario2);
+        idUsuario1 = encriptationHelper.desencriptarAES(idUsuario1);
+        idUsuario2 = encriptationHelper.desencriptarAES(idUsuario2);
 
         try {
 
@@ -60,8 +63,8 @@ public class ChatService implements IChatService {
 
     @Override
     public List<MessageDTO> getAllMessages(String idUsuario1, String idUsuario2) {
-        idUsuario1 = EncriptationHelper.desencriptarAES(idUsuario1);
-        idUsuario2 = EncriptationHelper.desencriptarAES(idUsuario2);
+        idUsuario1 = encriptationHelper.desencriptarAES(idUsuario1);
+        idUsuario2 = encriptationHelper.desencriptarAES(idUsuario2);
 
         List<Chat> allChats = chatRepository.findAll();
 

@@ -2,11 +2,8 @@ package com.example.serviciochat.controller;
 
 import com.example.serviciochat.DTO.MessageDTO;
 import com.example.serviciochat.DTO.NuevoChatDTO;
-import com.example.serviciochat.model.Chat;
-import com.example.serviciochat.model.Message;
-import com.example.serviciochat.service.IChatService;
-import com.example.serviciochat.service.IMessageService;
-import com.example.serviciochat.utils.EncriptationHelper;
+import com.example.serviciochat.service.interfaces.IChatService;
+import com.example.serviciochat.service.interfaces.IMessageService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

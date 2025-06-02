@@ -1,9 +1,7 @@
-package com.example.serviciochat.service;
+package com.example.serviciochat.service.interfaces;
 
 import com.example.serviciochat.DTO.MessageDTO;
 import com.example.serviciochat.DTO.NuevoChatDTO;
-import com.example.serviciochat.model.Chat;
-import com.example.serviciochat.model.Message;
 
 import java.util.List;
 import java.util.Optional;
